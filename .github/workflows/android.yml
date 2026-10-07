@@ -1,0 +1,53 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.5
+
+      - name: Build optimized release APK (R8 + resource shrinking)
+        run: gradle :app:assembleRelease --stacktrace
+
+      - name: Collect APK and report size
+        run: |
+          mkdir -p dist
+          cp app/build/outputs/apk/release/*.apk dist/ProGallery-Lite.apk
+          SIZE=$(stat -c %s dist/ProGallery-Lite.apk)
+          echo "### Pro Gallery Lite" >> "$GITHUB_STEP_SUMMARY"
+          echo "Release APK size: **$((SIZE / 1024)) KB**" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ProGallery-Lite-release-apk
+          path: dist/ProGallery-Lite.apk
+
+      - name: Publish GitHub Release (on v* tags)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/ProGallery-Lite.apk

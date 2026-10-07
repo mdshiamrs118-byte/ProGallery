@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="100dp" android:layout_margin="3dp" android:background="@drawable/bg_thumb" android:clipToOutline="true">
+    <ImageView android:id="@+id/thumb" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop"/>
+    <TextView android:id="@+id/label" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="bottom" android:background="@drawable/scrim_bottom" android:padding="10dp" android:paddingTop="28dp" android:textColor="#FFF" android:textStyle="bold" android:textSize="13sp"/>
+    <ImageView android:id="@+id/play" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="bottom|start" android:layout_margin="6dp" android:src="@drawable/ic_play"/>
+    <ImageView android:id="@+id/fav" android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="top|end" android:layout_margin="6dp" android:src="@drawable/ic_heart_on" android:tint="@color/danger"/>
+    <FrameLayout android:id="@+id/check" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#556C8CFF">
+        <ImageView android:layout_width="26dp" android:layout_height="26dp" android:layout_gravity="top|end" android:layout_margin="8dp" android:padding="4dp" android:background="@drawable/bg_chip" android:backgroundTint="@color/accent" android:src="@drawable/ic_check"/>
+    </FrameLayout>
+</FrameLayout>

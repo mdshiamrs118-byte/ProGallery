@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#000">
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/pager" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <LinearLayout android:id="@+id/top" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top" android:background="@drawable/scrim_top" android:gravity="center_vertical" android:paddingStart="6dp" android:paddingEnd="16dp" android:paddingBottom="16dp">
+        <ImageButton android:id="@+id/vBack" style="@style/IconBtn" android:src="@drawable/ic_back"/>
+        <TextView android:id="@+id/vTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:singleLine="true" android:ellipsize="end" android:textColor="#FFF" android:textSize="16sp" android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="bottom" android:layout_margin="16dp" android:background="@drawable/bg_card" android:gravity="center" android:padding="6dp">
+        <ImageButton android:id="@+id/vFav" style="@style/IconBtn" android:layout_width="0dp" android:layout_weight="1" android:src="@drawable/ic_heart"/>
+        <ImageButton android:id="@+id/vShare" style="@style/IconBtn" android:layout_width="0dp" android:layout_weight="1" android:src="@drawable/ic_share"/>
+        <ImageButton android:id="@+id/vEdit" style="@style/IconBtn" android:layout_width="0dp" android:layout_weight="1" android:src="@drawable/ic_edit"/>
+        <ImageButton android:id="@+id/vDel" style="@style/IconBtn" android:layout_width="0dp" android:layout_weight="1" android:src="@drawable/ic_delete"/>
+        <ImageButton android:id="@+id/vMore" style="@style/IconBtn" android:layout_width="0dp" android:layout_weight="1" android:src="@drawable/ic_more"/>
+    </LinearLayout>
+</FrameLayout>
